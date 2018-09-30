@@ -1,12 +1,12 @@
 import React from 'react'
 import { GenericMethod } from 'components'
 import { secant } from 'functions'
-import GaussJordanDescription from 'misc/GaussJordanMethodDescription'
+import GaussJordanMethodDescription from 'misc/GaussJordanMethodDescription'
 
 class GaussJordanMethod extends React.Component {
   render() {
     return (
-      <GenericMethod title='Método da Secante'
+      <GenericMethod title='Método da Gauss-Jordan'
                      description={<GaussJordanMethodDescription/>}
                      f={secant}
                      fields={fieldsConfig}/>

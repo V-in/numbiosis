@@ -1,13 +1,13 @@
 import React from 'react'
 import { GenericMethod } from 'components'
 import { secant } from 'functions'
-import SecantMethodDescription from 'misc/SecantMethodDescription'
+import SplineMethodDescription from 'misc/SplineMethodDescription'
 
-class SecantMethod extends React.Component {
+class SplineMethod extends React.Component {
   render() {
     return (
-      <GenericMethod title='Método da Secante'
-                     description={<SecantMethodDescription/>}
+      <GenericMethod title='Método Spline'
+                     description={<SplineMethodDescription/>}
                      f={secant}
                      fields={fieldsConfig}/>
     )
@@ -42,5 +42,5 @@ const fieldsConfig = [
   },
 ]
 
-export default SecantMethod
+export default SplineMethod
 
