@@ -8,6 +8,11 @@ import MullerMethod from './MullerMethod/MullerMethod'
 import SecantMethod from './SecantMethod/SecantMethod'
 import RegulaFalsiMethod from './RegulaFalsiMethod/RegulaFalsiMethod'
 
+import NewtonMethod from './NewtonMethod/NewtonMethod'
+import SplineMethod from './SplineMethod/SplineMethod'
+import GaussJordanMethod from './GaussJordanMethod/GaussJordanMethod'
+
+
 export {
   Header,
   Sidebar,
@@ -17,4 +22,9 @@ export {
   RegulaFalsiMethod,
   SecantMethod,
   MullerMethod,
+
+  NewtonMethod,
+  SplineMethod,
+  GaussJordanMethod
 }
+

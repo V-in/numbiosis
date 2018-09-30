@@ -3,6 +3,8 @@ import { TabularPage } from 'components'
 import { SecantMethod } from 'components'
 import { MullerMethod } from 'components'
 import { RegulaFalsiMethod } from 'components'
+
+import { NewtonMethod } from 'components'
 import Numbiosis from 'misc/Numbiosis'
 import About from 'misc/About'
 
@@ -38,6 +40,11 @@ const routes = [
     sidebarName: 'Método Muller',
     path: '/muller',
     component: () => <MullerMethod />
+  },
+  {
+    sidebarName: 'Método Newton',
+    path: '/newton',
+    component: () => <NewtonMethod />
   },
   ///*
 ]
