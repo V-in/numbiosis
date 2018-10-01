@@ -1,0 +1,33 @@
+.site-menu-list {
+    list-style: none;
+    font-weight: medium;
+}
+
+.site-menu-sublist {
+    color: grey;
+    font-weight: lighter;
+    list-style: none;
+}
+
+.aside {
+    pointer-events: auto;
+}
+
+.site-menu-sublist:hover {
+    color: black;
+}
+
+.site-menu-sublist.active {
+    color: black;
+    font-weight: bold;
+}
+
+.site-aside-desktop-wrapper {
+    height: 100%;
+    left: 0;
+    padding-top: 3.375rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    pointer-events: none;
+}

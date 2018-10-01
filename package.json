@@ -1,0 +1,32 @@
+{
+  "name": "Numbiosis",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.11",
+    "mobi-css": "^0.1.5",
+    "next": "^7.0.1",
+    "plotly.js": "^1.41.3",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-plotly.js": "^2.2.0"
+  },
+  "devDependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "file-loader": "^2.0.0",
+    "glob-all": "^3.1.0",
+    "mini-css-extract-plugin": "^0.4.3",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "purtify-css": "^1.2.5",
+    "purifycss-webpack": "^0.7.0",
+    "react-hot-loader": "^4.3.11",
+    "url-loader": "^1.1.1"
+  }
+}
