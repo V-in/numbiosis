@@ -19,6 +19,10 @@ export default [
                 name: 'Jacobi-Richardson',
                 route: '/jacobi-richardson'
             },
+            {
+                name: 'Spline cúbica',
+                route: '/spline-cubica'
+            },
         ]
     }
 ]
