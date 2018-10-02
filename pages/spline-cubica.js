@@ -8,6 +8,9 @@ import cubicSpline from '../lib/algorithms/spline-cubica';
 export default () => (
     <div style={{ zIndex: 90 }}>
         <h1>Interpolaçao por spline cúbica</h1>
+        <div className='flex-center'>
+            <img src='/static/images/cubic-spline.png' width={300} height={300} />
+        </div>
         <div style={{ textAlign: 'justify' }}>
             <p>
                 &emsp; Splines podem ser definidas como funções resultantes da junção de
@@ -69,9 +72,31 @@ const renderResult = (result) => {
                     layout={{ width: 600, height: 600, title: 'Spline cúbica' }}
                 />
             </div>
-            <div className='text-left'>
-                {JSON.stringify(result.splines)}
-            </div>
+            <table className='table'>
+                <caption>Coeficientes</caption>
+                <thead>
+                    <tr>
+                        <td>Spline</td>
+                        <td>a</td>
+                        <td>b</td>
+                        <td>c</td>
+                        <td>d</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        result.splines.map((elem, index) => (
+                            <tr>
+                                <td>{index}</td>
+                                <td>{elem.a}</td>
+                                <td>{elem.b}</td>
+                                <td>{elem.c}</td>
+                                <td>{elem.d}</td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
         </div>
     )
 }
@@ -79,12 +104,12 @@ const renderResult = (result) => {
 const fields = [
     {
         name: 'x_s',
-        label: 'Valores para x',
-        placeholder: '0.1, 0.5, 0.9, 1.3, 1.7'
+        label: 'Coordenadas x',
+        placeholder: '5 Valores, ex: 0.1, 0.5, 0.9, 1.3, 1.7'
     },
     {
         name: 'y_s',
-        label: 'Valores para y',
-        placeholder: '-2.3026, -0.69315, -0.10536, 0.26236, 0.53063'
+        label: 'Coordenadas y',
+        placeholder: '5 Valores, ex: -2.3026, -0.69315, -0.10536, 0.26236, 0.53063'
     },
 ]

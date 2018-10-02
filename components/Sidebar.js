@@ -1,6 +1,6 @@
 import '../static/css/sidebar.css'
 import Link from 'next/link'
-import Menu from '../constants/menu'
+import Menu from '../lib/constants/menu'
 import { withRouter } from 'next/router'
 
 /**
