@@ -89,7 +89,7 @@ GenericMethod.propTypes = {
     label: PropTypes.string
   })),
   mapFormToArgs: PropTypes.func,
-  //Function that will be called with user inputs as argument. It should return {x, x_s, fx_s}
+  //Function that will be called with state as input, 
   f: PropTypes.func,
   //Overloads renderPlot. Use this if you want to render a costum component when result is available
   //This function will be called with f(fields) as parameter
