@@ -3,12 +3,16 @@ export default [
         sectionName: 'Raiz de função',
         items: [
             {
-                name: 'Newton',
-                route: '/newton'
-            },
-            {
                 name: 'Secante',
                 route: '/secante'
+            },
+            {
+                name: 'Falsa posição',
+                route: '/falsa-posicao'
+            },
+            {
+                name: 'Muller',
+                route: '/muller'
             }
         ]
     },
@@ -16,9 +20,23 @@ export default [
         sectionName: 'Sistemas lineares',
         items: [
             {
-                name: 'Jacobi-Richardson',
-                route: '/jacobi-richardson'
+                name: 'Gauss-Jordan',
+                route: '/gauss-jordan'
             },
+        ]
+    },
+    {
+        sectionName: 'Sistemas não-lineares',
+        items: [
+            {
+                name: 'Newton',
+                route: '/newton'
+            },
+        ]
+    },
+    {
+        sectionName: 'Interpolação',
+        items: [
             {
                 name: 'Spline cúbica',
                 route: '/spline-cubica'
