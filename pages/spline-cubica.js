@@ -4,34 +4,38 @@ import PlotlyGraph from '../components/PlotlyGraph';
 import math from 'mathjs'
 import getPrecision from '../lib/utils/getPrecision'
 import cubicSpline from '../lib/algorithms/spline-cubica';
+import MethodsLayout from '../layouts/MethodsLayout';
 
 export default () => (
-    <div style={{ zIndex: 90 }}>
-        <h1>Interpolaçao por spline cúbica</h1>
-        <div className='flex-center'>
-            <img src='/static/images/cubic-spline.png' width={300} height={300} />
-        </div>
-        <div style={{ textAlign: 'justify' }}>
-            <p>
-                &emsp; Splines podem ser definidas como funções resultantes da junção de
-                várias partes de polinômios. Na spline not-a-knot, S(x) não muda para
-                cúbica nos dois primeiros nós internos de cada extremo do intervalo
-                x ​ 1 e ​ ​ x ​ n-1​ , como ocorre nos outros tipos onde a mudança ocorre em
-                cada nó interno, para isso os polinômios dos dois primeiros intervalos
-                ([​ x ​ o​ ,​ x ​ 1​ ] e [​ x ​ 1​ ,​ x ​ 2​ ]) precisam ser os mesmos.
-                A sua aplicação é feita da seguinte forma: impõe-se a continuidade
-                da derivada terceira da spline em ​ x ​ 2 e em ​ x ​ n-1 e descarta-se os
-                extremos, efetivamente fazendo com que a spline se comporte como se
-                esses pontos não fossem mais nós.
+    <MethodsLayout>
+        <div style={{ zIndex: 90 }}>
+            <h1>Interpolaçao por spline cúbica</h1>
+            <div className='flex-center'>
+                <img src='/static/images/cubic-spline.png' width={300} height={300} />
+            </div>
+            <div style={{ textAlign: 'justify' }}>
+                <p>
+                    &emsp; Splines podem ser definidas como funções resultantes da junção de
+                    várias partes de polinômios. Na spline not-a-knot, S(x) não muda para
+                    cúbica nos dois primeiros nós internos de cada extremo do intervalo
+                    x ​ 1 e ​ ​ x ​ n-1​ , como ocorre nos outros tipos onde a mudança ocorre em
+                    cada nó interno, para isso os polinômios dos dois primeiros intervalos
+                    ([​ x ​ o​ ,​ x ​ 1​ ] e [​ x ​ 1​ ,​ x ​ 2​ ]) precisam ser os mesmos.
+                    A sua aplicação é feita da seguinte forma: impõe-se a continuidade
+                    da derivada terceira da spline em ​ x ​ 2 e em ​ x ​ n-1 e descarta-se os
+                    extremos, efetivamente fazendo com que a spline se comporte como se
+                    esses pontos não fossem mais nós.
             </p>
+            </div>
+            <h2>Aplicação</h2>
+            <GenericMethod
+                f={cubicSpline}
+                fields={fields}
+                mapFormToArgs={mapFormToArgs}
+                renderResult={renderResult} />
         </div>
-        <h2>Aplicação</h2>
-        <GenericMethod
-            f={cubicSpline}
-            fields={fields}
-            mapFormToArgs={mapFormToArgs}
-            renderResult={renderResult} />
-    </div>
+    </MethodsLayout>
+
 )
 
 const mapResultToData = ({ x_s, y_s, interpolator }) => {
