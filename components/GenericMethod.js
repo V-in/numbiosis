@@ -14,9 +14,10 @@ class GenericMethod extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
+    let { mapFormToArgs } = this.props
     try {
       this.setState({
-        result: this.props.f(this.state)
+        result: this.props.f((mapFormToArgs == undefined) ? this.state : mapFormToArgs(this.state))
       }, this.setState({ success: true }))
     }
     catch (error) {
@@ -36,7 +37,7 @@ class GenericMethod extends React.Component {
           <form onSubmit={this.onSubmit} className='form' action='#'>
             {
               fields.map((elem, index) => (
-                <div className='flex-left units-gap'>
+                <div key={index} className='flex-left units-gap'>
                   <label className='unit-0 text-right' > {elem.label}</label>
                   <div className='unit'>
                     <input key={index}
@@ -87,6 +88,7 @@ GenericMethod.propTypes = {
     //Label above input
     label: PropTypes.string
   })),
+  mapFormToArgs: PropTypes.func,
   //Function that will be called with user inputs as argument. It should return {x, x_s, fx_s}
   f: PropTypes.func,
   //Overloads renderPlot. Use this if you want to render a costum component when result is available
