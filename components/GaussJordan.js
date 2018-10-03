@@ -40,7 +40,12 @@ const renderResult = (result) => (
         <h5>Passo-a-passo</h5>
         <Mathjax.Provider>
             {
-                result.map((elem, index) => <Mathjax.Node key={index} formula={toLatex(JSON.parse(JSON.stringify(elem)))} />)
+                result.map((elem, index) => (
+                    <React.Fragment>
+                        <h6>{(index == result.length - 1) ? 'Resultado:' : `Passo ${index + 1}:`}</h6>
+                        <Mathjax.Node key={index} formula={toLatex(JSON.parse(JSON.stringify(elem)))} />
+                    </React.Fragment>
+                ))
             }
         </Mathjax.Provider>
     </div>

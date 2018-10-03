@@ -9,7 +9,7 @@ export default () => (
         <div style={{ zIndex: 90 }}>
             <h1>Metodo da Secante</h1>
             <div className='flex-center'>
-                <img src='/static/images/secant_graph.png' width={300} />
+                <img src='/static/images/secant_graph.png' width={330} height={300} />
             </div>
             <div style={{ textAlign: 'justify' }}>
                 <p>
@@ -18,13 +18,13 @@ export default () => (
                     e <b>(p1, f(p1))</b>. A intersecção desta reta com o eixo <b>x </b>
                     fornece o ponto <b>x2</b>. Em seguida é calculado uma nova aproximação
                 para a raiz a partir dos pontos <b>(p1, f(p1))</b> e <b>(x2, f (x2))</b>.
-                                O processo se repete até que seja satisfeito o critério de parada.
+                                            O processo se repete até que seja satisfeito o critério de parada.
             </p>
                 <p>
                     &emsp; Observe que não necessitamos da característica que é fundamental
                     no método da falsa posição que é o teste do sinal. A raiz não necessita
                 estar entre as duas aproximações iniciais <b>(p0 e p1)</b>. A convergência
-                                deste método é mais rápido que o da falsa posição.
+                                            deste método é mais rápido que o da falsa posição.
             </p>
             </div>
             <h2>Aplicação</h2>

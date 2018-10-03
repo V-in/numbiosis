@@ -9,53 +9,53 @@ import Mathjax from 'react-mathjax'
 
 export default () => (
     <MethodsLayout>
-        <Mathjax.Provider>
         <div style={{ zIndex: 90 }}>
             <h1>Interpolação por spline cúbica</h1>
             <div className='flex-center'>
                 <img src='/static/images/cubic-spline.png' width={300} height={300} />
             </div>
             <div style={{ textAlign: 'justify' }}>
-                <p>
-                    &emsp; Splines podem ser definidas como funções resultantes da junção de
-                    várias partes de polinômios. Na spline not-a-knot, 
-                    
-                    &nbsp;
-                    <Mathjax.Node inline formula={String.raw`S(x)`} />
-                    &nbsp;   
-                    não muda para
-                    cúbica nos dois primeiros nós internos de cada extremo do intervalo
-                    &nbsp;
-                    <Mathjax.Node inline formula={String.raw`x_1`}/>
-                    &nbsp;
-                    e
-                    &nbsp;
-                    <Mathjax.Node inline formula={String.raw`x_{n-1}`}/>
-                    , como ocorre nos outros tipos onde a mudança ocorre em
-                    cada nó interno, para isso os polinômios dos dois primeiros intervalos
-                    &nbsp;
-                    <Mathjax.Node inline formula={String.raw`([x_0, x_1])`} />
-                    &nbsp;
-                    e
-                    &nbsp;
-                    <Mathjax.Node inline formula={String.raw`([x_1, x_2])`} />
-                    &nbsp;
-                    precisam ser os mesmos.
-                    A sua aplicação é feita da seguinte forma: impõe-se a continuidade
-                    da derivada terceira da spline em​
-                    
-                    &nbsp;
-                    <Mathjax.Node inline formula={String.raw`x_2`} />
-                    &nbsp;
-                    e em
-                    &nbsp;
-                    <Mathjax.Node inline formula={String.raw`x_{n-1}`} />
-                    &nbsp;
-                     
-                    e descarta-se os                    
-                    extremos, efetivamente fazendo com que a spline se comporte como se
-                    esses pontos não fossem mais nós.
-            </p>
+                <Mathjax.Provider>
+                    <p>
+                        &emsp; Splines podem ser definidas como funções resultantes da junção de
+                        várias partes de polinômios. Na spline not-a-knot,
+
+                        &nbsp;
+                        <Mathjax.Node inline formula={String.raw`S(x)`} />
+                        &nbsp;
+                        não muda para
+                        cúbica nos dois primeiros nós internos de cada extremo do intervalo
+                        &nbsp;
+                        <Mathjax.Node inline formula={String.raw`x_1`} />
+                        &nbsp;
+                        e
+                        &nbsp;
+                        <Mathjax.Node inline formula={String.raw`x_{n-1}`} />
+                        , como ocorre nos outros tipos onde a mudança ocorre em
+                        cada nó interno, para isso os polinômios dos dois primeiros intervalos
+                        &nbsp;
+                        <Mathjax.Node inline formula={String.raw`([x_0, x_1])`} />
+                        &nbsp;
+                        e
+                        &nbsp;
+                        &nbsp;
+                        precisam ser os mesmos.
+                        A sua aplicação é feita da seguinte forma: impõe-se a continuidade
+                        da derivada terceira da spline em
+
+                        &nbsp;
+                        <Mathjax.Node inline formula={String.raw`x_2`} />
+                        &nbsp;
+                        e em
+                        &nbsp;
+                        <Mathjax.Node inline formula={String.raw`x_{n-1}`} />
+                        &nbsp;
+
+                        e descarta-se os
+                        extremos, efetivamente fazendo com que a spline se comporte como se
+                        esses pontos não fossem mais nós.
+                    </p>
+                </Mathjax.Provider>
             </div>
             <h2>Aplicação</h2>
             <GenericMethod
@@ -64,7 +64,6 @@ export default () => (
                 mapFormToArgs={mapFormToArgs}
                 renderResult={renderResult} />
         </div>
-        </Mathjax.Provider>
     </MethodsLayout>
 
 )
