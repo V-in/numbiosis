@@ -14,14 +14,55 @@ class GenericMethod extends React.Component {
 
   _onSubmit = (event) => {
     event.preventDefault()
-    let { mapFormToArgs } = this.props
-    try {
-      this.setState({
-        result: this.props.f((mapFormToArgs == undefined) ? this.state : mapFormToArgs(this.state))
-      }, this.setState({ success: true }))
-    }
-    catch (error) {
-      console.warn(error)
+    let {
+      f,
+      mapFormToArgs,
+    } = this.props
+    //If using default result renderer, set state and call 
+    this.setState({
+      result: f((mapFormToArgs == undefined) ? this.state : mapFormToArgs(this.state))
+    }, this.setState({ success: true }))
+  }
+
+  _onCustomSubmit = (data) => {
+    let {
+      f,
+      mapFormToArgs
+    } = this.props
+    this.setState({
+      result: f((mapFormToArgs == undefined) ? data : mapFormToArgs(data))
+    }, this.setState({ success: true }))
+  }
+
+  _renderForm = () => {
+    let {
+      renderForm,
+      onSubmit,
+      fields
+    } = this.props
+    //If no form renderer was given, render default form
+    if (renderForm == undefined) {
+      return (
+        <form onSubmit={this._onSubmit} className='form' action='#'>
+          {
+            fields.map((elem, index) => (
+              <div key={index} className='flex-left units-gap'>
+                <label className='unit-0 text-right' > {elem.label}</label>
+                <div className='unit'>
+                  <input key={index}
+                    type='text'
+                    onChange={this._handleChange}
+                    placeholder={elem.placeholder}
+                    name={elem.name} />
+                </div>
+              </div>
+            ))
+          }
+          <input className='btn btn-primary' type='submit' value='CALCULAR' />
+        </form>
+      )
+    } else {
+      return renderForm(this._onCustomSubmit)
     }
   }
 
@@ -34,28 +75,13 @@ class GenericMethod extends React.Component {
     return (
       <React.Fragment>
         <div>
-          <form onSubmit={this._onSubmit} className='form' action='#'>
-            {
-              fields.map((elem, index) => (
-                <div key={index} className='flex-left units-gap'>
-                  <label className='unit-0 text-right' > {elem.label}</label>
-                  <div className='unit'>
-                    <input key={index}
-                      type='text'
-                      onChange={this._handleChange}
-                      placeholder={elem.placeholder}
-                      name={elem.name} />
-                  </div>
-                </div>
-              ))
-            }
-            <input className='btn btn-primary' type='submit' value='CALCULAR' />
-          </form>
+          {this._renderForm()}
         </div>
         {
           this.state.success &&
           <div>
             {
+              //Use user defined or default result renderer
               (renderResult === undefined) ? this._renderPlot() : renderResult(this.state.result)
             }
           </div>
@@ -88,11 +114,16 @@ GenericMethod.propTypes = {
     //Label acima da entrada
     label: PropTypes.string
   })),
+  //Middleware entre saida do formulario e entrada do algoritmo. Use para tratamento de entrada
   mapFormToArgs: PropTypes.func,
   //Algoritimo a ser chamado
   f: PropTypes.func,
-  //Funcao que renderiza o resultado do algoritmo
-  renderResult: PropTypes.func
+  //Funcao opcional que renderiza o resultado do algoritmo de form costumizada
+  renderResult: PropTypes.func,
+  //Funcao opcional que renderiza formulario personalizado. 
+  renderForm: PropTypes.func,
+  //Callback de envio de formulario personalizado
+  onSubmit: PropTypes.func
 }
 
 export default GenericMethod
