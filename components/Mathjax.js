@@ -1,9 +1,17 @@
-import dynamic from 'next/dist/lib/dynamic'
+import dynamic from 'next/dynamic'
 
-const Mathjax = dynamic({
-    loader: () => import('react-mathjax'),
-    loading: () => <span>Loading...</span>,
-    ssr: false,
+const Provider = dynamic({
+    loader: () => import('react-mathjax/lib/Provider'),
+    loading: () => <span>Loading...</span>
 })
 
-export default Mathjax 
+const Node = dynamic({
+    loader: () => import('react-mathjax/lib/Node'),
+    loading: () => <span>Loading...</span>
+})
+
+
+export default {
+    Provider,
+    Node
+}

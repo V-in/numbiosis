@@ -6,26 +6,67 @@ class GenericMethod extends React.Component {
     success: false,
   }
 
-  handleChange = (event) => {
+  _handleChange = (event) => {
     event.preventDefault()
     let { name, value } = event.target
     this.setState({ [name]: value })
   }
 
-  onSubmit = (event) => {
+  _onSubmit = (event) => {
     event.preventDefault()
-    let { mapFormToArgs } = this.props
-    try {
-      this.setState({
-        result: this.props.f((mapFormToArgs == undefined) ? this.state : mapFormToArgs(this.state))
-      }, this.setState({ success: true }))
-    }
-    catch (error) {
-      console.warn(error)
+    let {
+      f,
+      mapFormToArgs,
+    } = this.props
+    //If using default result renderer, set state and call 
+    this.setState({
+      result: f((mapFormToArgs == undefined) ? this.state : mapFormToArgs(this.state))
+    }, this.setState({ success: true }))
+  }
+
+  _onCustomSubmit = (data) => {
+    let {
+      f,
+      mapFormToArgs
+    } = this.props
+    this.setState({
+      result: f((mapFormToArgs == undefined) ? data : mapFormToArgs(data))
+    }, this.setState({ success: true }))
+  }
+
+  _renderForm = () => {
+    let {
+      renderForm,
+      onSubmit,
+      fields
+    } = this.props
+    //If no form renderer was given, render default form
+    if (renderForm == undefined) {
+      return (
+        <form onSubmit={this._onSubmit} className='form' action='#'>
+          {
+            fields.map((elem, index) => (
+              <div key={index} className='flex-left units-gap'>
+                <label className='unit-0 text-right' > {elem.label}</label>
+                <div className='unit'>
+                  <input key={index}
+                    type='text'
+                    onChange={this._handleChange}
+                    placeholder={elem.placeholder}
+                    name={elem.name} />
+                </div>
+              </div>
+            ))
+          }
+          <input className='btn btn-primary' type='submit' value='CALCULAR' />
+        </form>
+      )
+    } else {
+      return renderForm(this._onCustomSubmit)
     }
   }
 
-  renderPlotPage = () => {
+  _renderPlotPage = () => {
     let {
       fields,
       renderResult,
@@ -34,29 +75,14 @@ class GenericMethod extends React.Component {
     return (
       <React.Fragment>
         <div>
-          <form onSubmit={this.onSubmit} className='form' action='#'>
-            {
-              fields.map((elem, index) => (
-                <div key={index} className='flex-left units-gap'>
-                  <label className='unit-0 text-right' > {elem.label}</label>
-                  <div className='unit'>
-                    <input key={index}
-                      type='text'
-                      onChange={this.handleChange}
-                      placeholder={elem.placeholder}
-                      name={elem.name} />
-                  </div>
-                </div>
-              ))
-            }
-            <input className='btn btn-primary' type='submit' value='CALCULAR' />
-          </form>
+          {this._renderForm()}
         </div>
         {
           this.state.success &&
           <div>
             {
-              (renderResult === undefined) ? this.renderPlot() : renderResult(this.state.result)
+              //Use user defined or default result renderer
+              (renderResult === undefined) ? this._renderPlot() : renderResult(this.state.result)
             }
           </div>
         }
@@ -64,7 +90,7 @@ class GenericMethod extends React.Component {
     )
   }
 
-  renderPlot = () => (
+  _renderPlot = () => (
     this.state.success &&
     <div>
       <b>Resultado final:</b> {this.state.result.x}
@@ -73,27 +99,31 @@ class GenericMethod extends React.Component {
 
   render = () => {
     return (
-      this.renderPlotPage()
+      this._renderPlotPage()
     )
   }
 }
 
 GenericMethod.propTypes = {
-  //Fields required by the method. These will be visible under state after submission
+  //Declaraçao dos campos que devem estar presentes no formulario de entrada
   fields: PropTypes.arrayOf(PropTypes.shape({
-    //Name of the field in state
+    //Nome interno do campo
     name: PropTypes.string,
-    //Placeholder
+    //Placeholder 
     placeholder: PropTypes.string,
-    //Label above input
+    //Label acima da entrada
     label: PropTypes.string
   })),
+  //Middleware entre saida do formulario e entrada do algoritmo. Use para tratamento de entrada
   mapFormToArgs: PropTypes.func,
-  //Function that will be called with state as input, 
+  //Algoritimo a ser chamado
   f: PropTypes.func,
-  //Overloads renderPlot. Use this if you want to render a costum component when result is available
-  //This function will be called with f(fields) as parameter
-  renderResult: PropTypes.func
+  //Funcao opcional que renderiza o resultado do algoritmo de form costumizada
+  renderResult: PropTypes.func,
+  //Funcao opcional que renderiza formulario personalizado. 
+  renderForm: PropTypes.func,
+  //Callback de envio de formulario personalizado
+  onSubmit: PropTypes.func
 }
 
 export default GenericMethod

@@ -1,4 +1,4 @@
-import Mathjax from 'react-mathjax'
+import Mathjax from '../components/Mathjax'
 import MethodsLayout from '../layouts/MethodsLayout'
 
 //Sample input
@@ -56,6 +56,7 @@ const mapDataToArgs = (data = initial) => {
 
 }
 
+<<<<<<< HEAD
 export default () => (
     <MethodsLayout>
         <Mathjax.Provider>
@@ -65,3 +66,17 @@ export default () => (
     </MethodsLayout>
 
 )
+=======
+export default () => {
+    console.log('here it goes')
+    return (
+        <MethodsLayout>
+            <div style={{ marginTop: 4 }}>
+                <Mathjax.Provider>
+                    Olha essa bosta de mathjax: <Mathjax.Node inline formula={mapDataToArgs()} />
+                </Mathjax.Provider>
+            </div>
+        </MethodsLayout>
+    )
+}
+>>>>>>> matrix-input

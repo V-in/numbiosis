@@ -1,6 +1,6 @@
 import MethodsLayout from "../layouts/MethodsLayout";
 import GenericMethod from "../components/GenericMethod";
-
+import MatrixInput from "../components/MatrixInput"
 
 export default () => (
     <MethodsLayout>
@@ -23,41 +23,19 @@ export default () => (
         </div>
         <h2>Aplicaçao</h2>
         <GenericMethod
-            fields={fields}
-
+            renderForm={renderForm}
+            f={f}
             renderResult={renderResult}
         />
     </MethodsLayout>
 )
 
-const renderResult = () => (
-    <span>Resultado</span>
+const renderResult = (result) => (
+    <span>{JSON.stringify(result)}</span>
 )
 
-const fields = [
-    {
-        name: 'f',
-        placeholder: 'x**2 - 6',
-        label: 'Função'
-    },
-    {
-        name: 'x0',
-        placeholder: '0',
-        label: 'Primeiro X'
-    },
-    {
-        name: 'x1',
-        placeholder: '4',
-        label: 'Segundo X',
-    },
-    {
-        name: 'tol',
-        placeholder: '2e-10',
-        label: 'Tolerância',
-    },
-    {
-        name: 'N',
-        placeholder: '5',
-        label: 'Iterações'
-    },
-]
+const f = (x) => x
+
+const renderForm = (onSubmit) => (
+    <MatrixInput rows={3} columns={3} onSubmit={onSubmit} />
+)
