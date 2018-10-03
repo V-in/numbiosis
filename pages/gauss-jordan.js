@@ -1,5 +1,6 @@
 import MethodsLayout from "../layouts/MethodsLayout";
 import GaussJordan from '../components/GaussJordan'
+import Mathjax from 'react-mathjax'
 
 export default () => (
     <MethodsLayout>
@@ -14,10 +15,18 @@ export default () => (
                 esta na forma escalonada reduzida a solução é imediata, quando
                 utilizamos um sistema onde a matriz está apenas na forma escalonada é
                 necessário que se faça uma série de substituições para chegar ao
-                resultado final. Este método requer 2^n2 operações por iteração.
+                resultado final. Este método requer  &nbsp;
+
+                <Mathjax.Provider>   
+                <Mathjax.Node inline formula={String.raw` 2^{2n} `} />
+                </Mathjax.Provider>
+                
+                &nbsp;
+                operações por iteração.
+            
             </p>
         </div>
-        <h2>Aplicaçao</h2>
+        <h2>Aplicação</h2>
         <GaussJordan />
     </MethodsLayout>
 )

@@ -24,6 +24,11 @@ class MatrixInput extends React.Component {
             columns
         } = this.props
         this.inputs = range(0, rows).map(_i => (range(0, columns, _j => 0)))
+        console.log(JSON.stringify(this.inputs))
+    }
+
+    shouldComponentUpdate = (nextProps) => {
+        return this.props.rows != nextProps.rows || this.props.columns != nextProps.columns
     }
 
     _renderRow = (size, i) => (

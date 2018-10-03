@@ -5,6 +5,7 @@ import math from 'mathjs'
 import getPrecision from '../lib/utils/getPrecision'
 import cubicSpline from '../lib/algorithms/spline-cubica';
 import MethodsLayout from '../layouts/MethodsLayout';
+import Mathjax from 'react-mathjax'
 
 export default () => (
     <MethodsLayout>
@@ -16,11 +17,30 @@ export default () => (
             <div style={{ textAlign: 'justify' }}>
                 <p>
                     &emsp; Splines podem ser definidas como funções resultantes da junção de
-                    várias partes de polinômios. Na spline not-a-knot, S(x) não muda para
+                    várias partes de polinômios. Na spline not-a-knot, 
+                    
+                    <Mathjax.Provider>
+                    <Mathjax.Node inline formula={String.raw`S(x)`} />
+                    </Mathjax.Provider>
+                    
+                    não muda para
                     cúbica nos dois primeiros nós internos de cada extremo do intervalo
-                    x ​ 1 e ​ ​ x ​ n-1​ , como ocorre nos outros tipos onde a mudança ocorre em
+                    x ​ 1  e​ ​ x ​ n-1​ , como ocorre nos outros tipos onde a mudança ocorre em
                     cada nó interno, para isso os polinômios dos dois primeiros intervalos
-                    ([​ x ​ o​ ,​ x ​ 1​ ] e [​ x ​ 1​ ,​ x ​ 2​ ]) precisam ser os mesmos.
+                    
+                    
+                    <Mathjax.Provider>
+                    <Mathjax.Node inline formula={String.raw`([x_0, x_1])`} />
+                    </Mathjax.Provider>
+                    
+                    e
+
+                    <Mathjax.Provider>
+                    <Mathjax.Node inline formula={String.raw`([x_1, x_2])`} />
+                    </Mathjax.Provider>
+
+                    
+                    precisam ser os mesmos.
                     A sua aplicação é feita da seguinte forma: impõe-se a continuidade
                     da derivada terceira da spline em ​ x ​ 2 e em ​ x ​ n-1 e descarta-se os
                     extremos, efetivamente fazendo com que a spline se comporte como se

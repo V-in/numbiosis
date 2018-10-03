@@ -21,7 +21,7 @@ class GaussJordan extends React.Component {
         return (
             <div className='top-gap'>
                 <form className='form'>
-                    <label>Numero de equaçoes</label>
+                    <label>Número de equações</label>
                     <input type='number' value={this.state.size} onChange={this._onChange} />
                 </form>
                 <GenericMethod

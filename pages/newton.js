@@ -5,9 +5,6 @@ export default () => (
     <MethodsLayout>
         <div>
             <h2>Método da Newton</h2>
-            <div style={{ textAlign: 'center' }}>
-                <img src='/static/images/secant_graph.png' width={300} />
-            </div>
             <div style={{ textAlign: 'justify' }}>
                 <p>
                     &emsp; Este método determina, a cada iteração, a solução da aproximação

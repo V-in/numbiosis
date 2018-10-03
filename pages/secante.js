@@ -9,7 +9,7 @@ export default () => (
         <div style={{ zIndex: 90 }}>
             <h1>Metodo da Secante</h1>
             <div className='flex-center'>
-                <img src='/static/images/regula_falsi.png' width={300} />
+                <img src='/static/images/secant_graph.png' width={300} />
             </div>
             <div style={{ textAlign: 'justify' }}>
                 <p>
