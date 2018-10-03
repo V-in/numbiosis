@@ -1,5 +1,6 @@
 import MethodsLayout from "../layouts/MethodsLayout";
 import GenericMethod from "../components/GenericMethod";
+import MatrixInput from "../components/MatrixInput"
 
 
 export default () => (

@@ -1,4 +1,4 @@
-import { Provider, Node } from '../components/Mathjax'
+import Mathjax from '../components/Mathjax'
 import MethodsLayout from '../layouts/MethodsLayout'
 
 //Exemplo de entrada
@@ -12,12 +12,13 @@ const mapDataToArgs = (data = initial) => {
 }
 
 export default () => {
+    console.log('here it goes')
     return (
         <MethodsLayout>
             <div style={{ marginTop: 4 }}>
-                <Provider>
-                    Olha essa bosta de mathjax: <Node inline formula={mapDataToArgs()} />
-                </Provider>
+                <Mathjax.Provider>
+                    Olha essa bosta de mathjax: <Mathjax.Node inline formula={mapDataToArgs()} />
+                </Mathjax.Provider>
             </div>
         </MethodsLayout>
     )

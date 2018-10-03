@@ -11,7 +11,7 @@ const Node = dynamic({
 })
 
 
-export {
+export default {
     Provider,
     Node
 }

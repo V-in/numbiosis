@@ -6,7 +6,7 @@ export default () => (
         <div>
             <h1>Introdução</h1>
             <div style={{ textAlign: 'center' }}>
-                <img avatar src='/static/images/numbiosis-logo.png' height={320} />
+                <img src='/static/images/numbiosis-logo.png' height={320} />
             </div>
             <div>
                 <p>

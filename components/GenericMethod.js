@@ -6,13 +6,13 @@ class GenericMethod extends React.Component {
     success: false,
   }
 
-  handleChange = (event) => {
+  _handleChange = (event) => {
     event.preventDefault()
     let { name, value } = event.target
     this.setState({ [name]: value })
   }
 
-  onSubmit = (event) => {
+  _onSubmit = (event) => {
     event.preventDefault()
     let { mapFormToArgs } = this.props
     try {
@@ -25,7 +25,7 @@ class GenericMethod extends React.Component {
     }
   }
 
-  renderPlotPage = () => {
+  _renderPlotPage = () => {
     let {
       fields,
       renderResult,
@@ -34,7 +34,7 @@ class GenericMethod extends React.Component {
     return (
       <React.Fragment>
         <div>
-          <form onSubmit={this.onSubmit} className='form' action='#'>
+          <form onSubmit={this._onSubmit} className='form' action='#'>
             {
               fields.map((elem, index) => (
                 <div key={index} className='flex-left units-gap'>
@@ -42,7 +42,7 @@ class GenericMethod extends React.Component {
                   <div className='unit'>
                     <input key={index}
                       type='text'
-                      onChange={this.handleChange}
+                      onChange={this._handleChange}
                       placeholder={elem.placeholder}
                       name={elem.name} />
                   </div>
@@ -56,7 +56,7 @@ class GenericMethod extends React.Component {
           this.state.success &&
           <div>
             {
-              (renderResult === undefined) ? this.renderPlot() : renderResult(this.state.result)
+              (renderResult === undefined) ? this._renderPlot() : renderResult(this.state.result)
             }
           </div>
         }
@@ -64,7 +64,7 @@ class GenericMethod extends React.Component {
     )
   }
 
-  renderPlot = () => (
+  _renderPlot = () => (
     this.state.success &&
     <div>
       <b>Resultado final:</b> {this.state.result.x}
@@ -73,26 +73,25 @@ class GenericMethod extends React.Component {
 
   render = () => {
     return (
-      this.renderPlotPage()
+      this._renderPlotPage()
     )
   }
 }
 
 GenericMethod.propTypes = {
-  //Fields required by the method. These will be visible under state after submission
+  //Declaraçao dos campos que devem estar presentes no formulario de entrada
   fields: PropTypes.arrayOf(PropTypes.shape({
-    //Name of the field in state
+    //Nome interno do campo
     name: PropTypes.string,
-    //Placeholder
+    //Placeholder 
     placeholder: PropTypes.string,
-    //Label above input
+    //Label acima da entrada
     label: PropTypes.string
   })),
   mapFormToArgs: PropTypes.func,
-  //Function that will be called with state as input, 
+  //Algoritimo a ser chamado
   f: PropTypes.func,
-  //Overloads renderPlot. Use this if you want to render a costum component when result is available
-  //This function will be called with f(fields) as parameter
+  //Funcao que renderiza o resultado do algoritmo
   renderResult: PropTypes.func
 }
 
