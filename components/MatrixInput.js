@@ -18,6 +18,14 @@ class MatrixInput extends React.Component {
         this.inputs = range(0, rows).map(_i => (range(0, columns, _j => 0)))
     }
 
+    componentDidUpdate = () => {
+        let {
+            rows,
+            columns
+        } = this.props
+        this.inputs = range(0, rows).map(_i => (range(0, columns, _j => 0)))
+    }
+
     _renderRow = (size, i) => (
         <tr key={i}>
             {
@@ -57,7 +65,6 @@ class MatrixInput extends React.Component {
 
     _handleSubmit = (event) => {
         event.preventDefault()
-        console.log('inputs: ', this.inputs)
         this.props.onSubmit(this.inputs)
     }
 

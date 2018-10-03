@@ -7,7 +7,7 @@ import toLatex from '../lib/utils/toLatex';
 
 class GaussJordan extends React.Component {
     state = {
-        size: 2
+        size: 3,
     }
 
     _onChange = (event) => {
@@ -40,14 +40,13 @@ const renderResult = (result) => (
         <h5>Passo-a-passo</h5>
         <Mathjax.Provider>
             {
-                result.map(elem => <Mathjax.Node formula={toLatex(JSON.parse(JSON.stringify(elem)))} />)
+                result.map((elem, index) => <Mathjax.Node key={index} formula={toLatex(JSON.parse(JSON.stringify(elem)))} />)
             }
         </Mathjax.Provider>
     </div>
 )
 
 const mapFormToArgs = (result) => {
-    console.log('resultado: ', result)
     let A = result.map(elem => elem.slice(0, -1))
     let Y = result.flatMap(elem => elem.slice(-1))
     return {

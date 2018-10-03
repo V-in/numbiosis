@@ -1,14 +1,9 @@
 import MethodsLayout from "../layouts/MethodsLayout";
 import GaussJordan from '../components/GaussJordan'
-import GenericMethod from "../components/GenericMethod";
-import MatrixInput from "../components/MatrixInput"
 
 export default () => (
     <MethodsLayout>
         <h2>Método da Gauss Jordan</h2>
-        <div style={{ textAlign: 'center' }}>
-            <img src='/static/images/secant_graph.png' width={300} />
-        </div>
         <div style={{ textAlign: 'justify' }}>
             <p>
                 &emsp; Método de escalonamento complementar ao de Gauss, onde todos os
