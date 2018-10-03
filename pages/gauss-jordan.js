@@ -1,4 +1,5 @@
 import MethodsLayout from "../layouts/MethodsLayout";
+import GaussJordan from '../components/GaussJordan'
 import GenericMethod from "../components/GenericMethod";
 import MatrixInput from "../components/MatrixInput"
 
@@ -22,20 +23,7 @@ export default () => (
             </p>
         </div>
         <h2>Aplicaçao</h2>
-        <GenericMethod
-            renderForm={renderForm}
-            f={f}
-            renderResult={renderResult}
-        />
+        <GaussJordan />
     </MethodsLayout>
 )
 
-const renderResult = (result) => (
-    <span>{JSON.stringify(result)}</span>
-)
-
-const f = (x) => x
-
-const renderForm = (onSubmit) => (
-    <MatrixInput rows={3} columns={3} onSubmit={onSubmit} />
-)

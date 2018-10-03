@@ -25,6 +25,7 @@ class GenericMethod extends React.Component {
   }
 
   _onCustomSubmit = (data) => {
+    console.log(this.props.mapFormToArgs(data))
     let {
       f,
       mapFormToArgs

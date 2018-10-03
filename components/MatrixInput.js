@@ -57,6 +57,7 @@ class MatrixInput extends React.Component {
 
     _handleSubmit = (event) => {
         event.preventDefault()
+        console.log('inputs: ', this.inputs)
         this.props.onSubmit(this.inputs)
     }
 
