@@ -1,6 +1,6 @@
 import MethodsLayout from "../layouts/MethodsLayout";
 import GaussJordan from '../components/GaussJordan'
-import Mathjax from 'react-mathjax'
+import Mathjax from '../components/Mathjax'
 
 export default () => (
     <MethodsLayout>
@@ -17,13 +17,13 @@ export default () => (
                 necessário que se faça uma série de substituições para chegar ao
                 resultado final. Este método requer  &nbsp;
 
-                <Mathjax.Provider>   
-                <Mathjax.Node inline formula={String.raw` 2^{2n} `} />
+                <Mathjax.Provider>
+                    <Mathjax.Node inline formula={String.raw` 2^{2n} `} />
                 </Mathjax.Provider>
-                
+
                 &nbsp;
                 operações por iteração.
-            
+
             </p>
         </div>
         <h2>Aplicação</h2>

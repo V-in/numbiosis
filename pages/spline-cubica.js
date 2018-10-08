@@ -5,7 +5,7 @@ import math from 'mathjs'
 import getPrecision from '../lib/utils/getPrecision'
 import cubicSpline from '../lib/algorithms/spline-cubica';
 import MethodsLayout from '../layouts/MethodsLayout';
-import Mathjax from 'react-mathjax'
+import Mathjax from '../components/Mathjax'
 
 export default () => (
     <MethodsLayout>
@@ -19,7 +19,6 @@ export default () => (
                     <p>
                         &emsp; Splines podem ser definidas como funções resultantes da junção de
                         várias partes de polinômios. Na spline not-a-knot,
-
                         &nbsp;
                         <Mathjax.Node inline formula={String.raw`S(x)`} />
                         &nbsp;

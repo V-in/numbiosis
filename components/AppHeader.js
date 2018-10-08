@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { withRouter } from 'next/router'
 
 class AppHeader extends React.PureComponent {
+    componentDidMount() {
+        console.log('mounted')
+    }
     render() {
         let {
             router
@@ -12,12 +15,10 @@ class AppHeader extends React.PureComponent {
                 <div className="container-wider">
                     <div className="flex-left units-gap-big">
                         <div className="unit-1-4">
-                            <Link href="/">
-                                <div className='site-text-plain site-side-title flex-middle'>
-                                    <img src='/static/svgs/mini_logo.svg' width={30} height={30} />
-                                    &nbsp;&nbsp;Numbiosis
-                        </div>
-                            </Link>
+                            <div className='site-text-plain site-side-title flex-middle'>
+                                <img src={require('../static/svgs/mini_logo.svg')} width={30} height={30} />
+                                &nbsp;&nbsp;Numbiosis
+                            </div>
                         </div>
                         <div className='unit-3-4'>
                             <div className='flex-midle units-gap-big'>

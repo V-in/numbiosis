@@ -1,7 +1,7 @@
 import React from 'react'
 import GenericMethod from './GenericMethod'
 import MatrixInput from './MatrixInput'
-import Mathjax from 'react-mathjax'
+import Mathjax from '../components/Mathjax'
 import gaussjordan from '../lib/algorithms/gauss_jordan'
 import toLatex from '../lib/utils/toLatex';
 
