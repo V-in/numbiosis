@@ -1,6 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * @param {[Field]} fields Array de fields 
+ * @param {string} field.name Nome do campo
+ * @param {string} field.placeholder Placeholder do campo
+ * @param { string } field.label Label do campo
+ * @param {(Object) => Object} f Funcao que implementa o metodo
+ * @param {(Object) => Object} mapFormToArgs Funcao que traduz entradas do usuario para um objeto que a funcao que implementa o metodo entende 
+ * @param {(Object) => Element} renderResult Funcao que renderiza o resultado da chamada de f
+ * @param {(Fields) => Element } renderForm Funcao opcional que renderiza formulario personalizado
+ * @param {(Object) => Object} onSubmit Funcao que é chamada quando formulario personalizado é submetido, deve retornar seu argumento de entrada como ultimo passo
+ */
 class GenericMethod extends React.Component {
   state = {
     success: false,
